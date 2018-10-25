@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService{
 	
 	public UserForm getUser(long userId) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDAO.getUser(userId);
 	}
 
 	public List<UserForm> getUserList() {
@@ -29,17 +29,17 @@ public class UserServiceImpl implements UserService{
 
 	public String updateUser(UserForm user) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDAO.updateUser(user);
 	}
 
 	public UserForm createUser(UserForm user) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDAO.createUser(user);
 	}
 
-	public String deleteUser(UserForm user) {
+	public UserForm deleteUser(UserForm user) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDAO.deleteUser(user);
 	}
 
 }

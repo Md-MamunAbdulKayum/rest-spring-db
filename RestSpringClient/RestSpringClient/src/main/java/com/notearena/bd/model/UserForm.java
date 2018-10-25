@@ -1,38 +1,21 @@
 package com.notearena.bd.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "user")
 public class UserForm {
 
-@Column
+
 private String userName;
 
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
+
 private long userId;
-@Column
+
 private int age;
-@Column
+
 private double salary;
-@Column
+
 private String address;
-
-
-
-
-
-
 
 /**
  * 
@@ -56,7 +39,6 @@ public UserForm(long userId) {
  * @param salary
  * @param address
  */
-
 @JsonCreator
 public UserForm(@JsonProperty("userName") String userName, @JsonProperty("userId") long userId,@JsonProperty("age") int age,@JsonProperty("salary") double salary, @JsonProperty("address") String address) {
 	super();
@@ -66,8 +48,6 @@ public UserForm(@JsonProperty("userName") String userName, @JsonProperty("userId
 	this.salary = salary;
 	this.address = address;
 }
-
-
 public String getUserName() {
 	return userName;
 }
@@ -99,10 +79,16 @@ public void setAddress(String address) {
 	this.address = address;
 }
 
+//@Override
+//public String toString() {
+//	return "UserForm [userName=" + userName + ", userId=" + userId + ", age=" + age + ", salary=" + salary
+//			+ ", address=" + address + "]";
+//}
+
 @Override
 public String toString() {
 	StringBuilder builder = new StringBuilder();
-	builder.append("UserForm [userName=");
+	builder.append("userName=");
 	builder.append(userName);
 	builder.append(", userId=");
 	builder.append(userId);
@@ -112,17 +98,8 @@ public String toString() {
 	builder.append(salary);
 	builder.append(", address=");
 	builder.append(address);
-	builder.append("]");
 	return builder.toString();
 }
-
-//@Override
-//public String toString() {
-//	return "UserForm [userName=" + userName + ", userId=" + userId + ", age=" + age + ", salary=" + salary
-//			+ ", address=" + address + "]";
-//}
-
-
 
 
 }

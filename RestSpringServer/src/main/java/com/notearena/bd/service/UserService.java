@@ -10,5 +10,5 @@ public interface UserService {
 	public List<UserForm> getUserList();
 	public String updateUser(UserForm user);
 	public UserForm createUser(UserForm user);
-	public String deleteUser(UserForm user);
+	public UserForm deleteUser(UserForm user);
 }

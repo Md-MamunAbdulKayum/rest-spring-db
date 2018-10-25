@@ -16,7 +16,6 @@ public class UserDAOImpl implements UserDAO{
 	private SessionFactory sessionFactory;
 	
 
-
 	
 	public UserForm getUser(long userId) {
 		return (UserForm) sessionFactory.getCurrentSession().get(
@@ -39,10 +38,11 @@ public class UserDAOImpl implements UserDAO{
 		return user;
 	}
 
-	public String deleteUser(UserForm user) {
+	public UserForm deleteUser(UserForm user) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().update(user);
-		return user.toString();
+		System.out.println("User id: "+user);
+		sessionFactory.getCurrentSession().delete(user);
+		return user;
 	}
 
 }
