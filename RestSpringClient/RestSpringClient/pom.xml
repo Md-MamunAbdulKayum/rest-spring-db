@@ -8,8 +8,8 @@
   <name>RestSpringClient Maven Webapp</name>
   <url>http://maven.apache.org</url>
       <properties>
-        <springframework.version>4.2.0.RELEASE</springframework.version>
-        <jackson.version>2.5.3</jackson.version>
+        <springframework.version>5.1.5.RELEASE</springframework.version>
+        <jackson.version>2.8.11.1</jackson.version>
     </properties>
   <dependencies>
         <dependency>
