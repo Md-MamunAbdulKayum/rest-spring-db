@@ -18,7 +18,7 @@ To test with the client application, you must run the server first like mention 
 
 1. Run the client app(RestSpringClient)  as "Run on server" at eclipse
 2. Hit
-a. http://localhost:8080/RestSpringClient/getuser to get a particular user, internally calls rest service  http://localhost:8080/SpringRestServer/service/user/{id}
+<br>a. http://localhost:8080/RestSpringClient/getuser to get a particular user, internally calls rest service  http://localhost:8080/SpringRestServer/service/user/{id}
 
 ### Response: 
 Get particular user service result: 
