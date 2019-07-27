@@ -24,8 +24,14 @@ To test with the client application, you must run the server first like mention 
 Get particular user service result: 
 <200 OK,userName=Dada, userId=1, age=29, salary=1.0E7, address=Test address,{Server=[Apache-Coyote/1.1], Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 25 Oct 2018 18:05:06 GMT]}>
 
+![getuser](https://github.com/Md-MamunAbdulKayum/rest-spring-db/blob/master/getuser.JPG)
+
+
 b. http://localhost:8080/RestSpringClient/getuserlist to get all users in the db table, internally calls rest service
-http://localhost:8080/SpringRestServer//service/user
+http://localhost:8080/SpringRestServer/service/user
+
+![getuserlist](https://github.com/Md-MamunAbdulKayum/rest-spring-db/blob/master/getuserlist.JPG)
+
 
 c. http://localhost:8080/RestSpringClient/createuser to create/insert a user, internally calls rest service
 http://localhost:8080/SpringRestServer/service/user/create
