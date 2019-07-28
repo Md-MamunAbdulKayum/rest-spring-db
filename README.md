@@ -22,7 +22,7 @@ a. http://localhost:8080/RestSpringClient/getuser to get a particular user, inte
 
 ### Response: 
 Get particular user service result: 
-<200 OK,userName=Dada-update-test, userId=1, age=29, salary=1.0E7, address=Test address,{Server=[Apache-Coyote/1.1], Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 25 Oct 2018 18:05:06 GMT]}>
+<200 OK,userName=Dada, userId=1, age=29, salary=1.0E7, address=Test address,{Server=[Apache-Coyote/1.1], Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 25 Oct 2018 18:05:06 GMT]}>
 
 b. http://localhost:8080/RestSpringClient/getuserlist to get all users in the db table, internally calls rest service
 http://localhost:8080/SpringRestServer//service/user

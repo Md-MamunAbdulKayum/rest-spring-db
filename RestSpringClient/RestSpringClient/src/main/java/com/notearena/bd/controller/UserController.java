@@ -12,7 +12,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -21,6 +24,8 @@ import com.notearena.bd.model.UserForm;
 
 @Controller
 public class UserController {
+	private List<UserForm> employees;
+
 	@RequestMapping(value = "createuser")
 public void createUser() throws Exception {
 		
@@ -68,8 +73,8 @@ public void createUser() throws Exception {
 		
 	}
 	
-	@RequestMapping(value = "getuser")
-	public void getUser() throws Exception {
+	@RequestMapping(value = "getuser", method = RequestMethod.GET)
+	public String getUser(ModelMap model) throws Exception {
 			
 			System.out.println("At getuser controller");
 			
@@ -103,10 +108,13 @@ public void createUser() throws Exception {
 		     if(personEntity!=null) {
 				// System.out.println("Result - status ("+ response.getStatusCode() + ") has body: " + response.hasBody());
 			        System.out.println("Get particular user service result: "+personEntity.toString()); 
-
+			        System.out.println("User name: "+personEntity.getBody().getUserName()); 
+			        model.addAttribute("user", personEntity.getBody());
+			        model.addAttribute("name", personEntity.getBody().getUserName());
+                   return "userInfo";
 		     }    else {
 		    	 System.out.println("null value"); 
-
+		    	 return "error";
 		     }
 
 
@@ -114,6 +122,7 @@ public void createUser() throws Exception {
 		}catch( Exception e){
 			
 			System.out.println("Exception occured: "+e);
+			return "error";
 		}	 
 	        
 	  
@@ -121,8 +130,8 @@ public void createUser() throws Exception {
 		}
 	
 	@RequestMapping(value = "getuserlist")
-	public void getUsersList() throws Exception {
-			
+	public String getUsersList(ModelMap model) throws Exception {
+		
 			System.out.println("At getuserlist controller");
 			
 			try{
@@ -135,14 +144,20 @@ public void createUser() throws Exception {
 
 			
 			
-			 ResponseEntity<List> personEntity = null;
+			ResponseEntity<List<UserForm>> personEntity = null;
 			try {
 
 		        HttpHeaders headers = new HttpHeaders();
 		        headers.setContentType(MediaType.APPLICATION_JSON);
 		        HttpEntity<String> entity = new HttpEntity<String>("", headers);
-		        personEntity = restTemplate.exchange(uri, HttpMethod.GET, entity, List.class);
-		        //System.out.println("Address:"+personEntity.getBody().getAddress());
+		        System.out.println("Getting list");
+		        //personEntity = restTemplate.exchange(uri, HttpMethod.GET, entity, new ParameterizedTypeReference<List<UserForm>>() {});
+		        personEntity = restTemplate.exchange(
+		        		  uri,
+		        		  HttpMethod.GET,
+		        		  null,
+		        		  new ParameterizedTypeReference<List<UserForm>>(){});
+		        System.out.println("Address:"+personEntity.getBody().get(0).getAddress());
 
 						
 			     
@@ -151,14 +166,20 @@ public void createUser() throws Exception {
 			    System.out.println("error statusCode: "+statusCode); 
 			}
 			 
-		     if(personEntity!=null) {
-				 System.out.println("Result - status ("+ personEntity.getStatusCode() + ") has body: " + personEntity.hasBody());
-		    	// List<UserForm> employees = response.getBody();
-			        System.out.println("Get all user service result: "+personEntity.toString()); 
+		     if(personEntity!=null) {		    	
+				 System.out.println("Result - status ("+ personEntity.getStatusCode() + ") has body: " + personEntity.hasBody());				    	 
+			     System.out.println("Get all user service result: "+personEntity.toString()); 
+
+			
+		    		 //employees = personEntity.getBody();
+				
+			    // System.out.println("All users: "+employees); 
+			     model.addAttribute("users", personEntity.getBody());
+			     return "allUserInfo";
 
 		     }    else {
 		    	 System.out.println("null value"); 
-
+		    	 return "error";
 		     }
 
 
@@ -166,8 +187,8 @@ public void createUser() throws Exception {
 		}catch( Exception e){
 			
 			System.out.println("Exception occured: "+e);
-		}	 
-	        
+			 return "error";
+		}	        
 	  
 			
 		}

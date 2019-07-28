@@ -41,13 +41,14 @@ public class UserController {
           System.out.println("All user");
 		  HttpHeaders headers = new HttpHeaders();
 		  List<UserForm> users = userService.getUserList();
-
 		  if (users == null) {
 		   return new ResponseEntity<List<UserForm>>(HttpStatus.NOT_FOUND);
 		  }
 		  headers.add("Number Of Records Found", String.valueOf(users.size()));
 		  System.out.println("User found: "+users);
-		  return new ResponseEntity<List<UserForm>>(users, headers, HttpStatus.OK);
+		  ResponseEntity<List<UserForm>> personEntity = new ResponseEntity<List<UserForm>>(users, HttpStatus.OK);
+		  System.out.println("Address: "+personEntity.getBody().get(0).getAddress());
+		  return  personEntity;
 		
 	}
 	
