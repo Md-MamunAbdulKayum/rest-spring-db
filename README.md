@@ -3,7 +3,7 @@ TO run the system and see the output we need to follow the following steps:
 
 ## Server:
 ------------------
-1. We have to import userrest.sql file at MySql server
+1. We have to create a dadabase called "userest" import userrest.sql file at MySql server
 2. Run the server app(RestSpringServer) as "Run on server" at eclipse
 3. You can hit the following url at browser :
 http://localhost:8080/SpringRestServer/service/user/1   
