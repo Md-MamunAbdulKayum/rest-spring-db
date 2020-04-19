@@ -19,7 +19,6 @@ public class UserForm {
 private String userName;
 
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
 private long userId;
 @Column
 private int age;
