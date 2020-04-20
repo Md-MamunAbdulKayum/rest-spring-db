@@ -19,6 +19,7 @@ public class UserForm {
 private String userName;
 
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private long userId;
 @Column
 private int age;
@@ -66,6 +67,21 @@ public UserForm(@JsonProperty("userName") String userName, @JsonProperty("userId
 	this.address = address;
 }
 
+/**
+ * 
+ * @param userName
+ * @param age
+ * @param salary
+ * @param address
+ */
+
+public UserForm(String userName, int age, double salary, String address) {
+	super();
+	this.userName = userName;
+	this.age = age;
+	this.salary = salary;
+	this.address = address;
+}
 
 public String getUserName() {
 	return userName;

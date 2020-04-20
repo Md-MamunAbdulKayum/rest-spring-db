@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +45,6 @@ public class UserController {
 		  headers.add("Number Of Records Found", String.valueOf(users.size()));
 		  System.out.println("User found: "+users);
 		  ResponseEntity<List<UserForm>> personEntity = new ResponseEntity<List<UserForm>>(users, HttpStatus.OK);
-		  System.out.println("Address: "+personEntity.getBody().get(0).getAddress());
 		  return  personEntity;
 		
 	}
@@ -62,24 +59,22 @@ public class UserController {
 		  }
 		  System.out.println("User: "+userObject);
 		  System.out.println("User id: "+userObject.getUserId());
-		  UserForm form = new UserForm(userObject.getUserName(), userObject.getUserId(), userObject.getAge(), userObject.getSalary(), userObject.getAddress());
+		  UserForm form = new UserForm(userObject.getUserName(), userObject.getAge(), userObject.getSalary(), userObject.getAddress());
 		  userService.createUser(userObject);
 		  headers.add("User Created  - ", String.valueOf(userObject.getUserId()));
 		  return new ResponseEntity<UserForm>(form, headers, HttpStatus.CREATED);
 		
 	}
 	
-	@RequestMapping(value = "/service/user/update/{id}", method = RequestMethod.PUT,produces = "application/json")
-	public ResponseEntity<UserForm> updateUser(@PathVariable("id") Long userId, @RequestBody UserForm userObject) {
+	@RequestMapping(value = "/service/user/update", method = RequestMethod.PUT,produces = "application/json")
+	public ResponseEntity<UserForm> updateUser(@RequestBody UserForm userObject) {
 		  HttpHeaders headers = new HttpHeaders();
-		  UserForm userForm = userService.getUser(userId);
+		  UserForm userForm = userService.getUser(userObject.getUserId());
 		  if (userForm == null) {   
 		   return new ResponseEntity<UserForm>(HttpStatus.NOT_FOUND);
-		  } else if (userObject == null) {
-		   return new ResponseEntity<UserForm>(HttpStatus.BAD_REQUEST);
-		  }
+		  } 
 		  userService.updateUser(userObject);
-		  headers.add("User Updated  - ", String.valueOf(userId));
+		  headers.add("User Updated  - ", String.valueOf((userObject.getUserId())));
 		  return new ResponseEntity<UserForm>(userObject, HttpStatus.OK);
 		 }
 	

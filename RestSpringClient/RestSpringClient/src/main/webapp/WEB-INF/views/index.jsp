@@ -30,9 +30,9 @@
 		</div>
 	</nav>
 	<div class="user-list" align="center">
-	<h1>Available Users</h1>
+	<h1>Users' List</h1>
 	<table border="2" width="70%" cellpadding="2">
-		<tr>
+	<tr>
 			<th>Name</th>
 			<th>Age</th>
 			<th>Salary</th>
@@ -57,7 +57,7 @@
 		</c:forEach>
    
            </c:otherwise>
-        </c:choose>		
+        </c:choose>	
 	</table>
 	<br />
 	</div>

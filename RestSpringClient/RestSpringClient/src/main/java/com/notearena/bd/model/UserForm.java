@@ -41,13 +41,27 @@ public UserForm(long userId) {
  */
 @JsonCreator
 public UserForm(@JsonProperty("userName") String userName, @JsonProperty("userId") long userId,@JsonProperty("age") int age,@JsonProperty("salary") double salary, @JsonProperty("address") String address) {
-	super();
 	this.userName = userName;
 	this.userId = userId;
 	this.age = age;
 	this.salary = salary;
 	this.address = address;
 }
+
+/**
+ * 
+ * @param userName
+ * @param age
+ * @param salary
+ * @param address
+ */
+public UserForm(String userName, int age, double salary, String address) {
+	this.userName = userName;
+	this.age = age;
+	this.salary = salary;
+	this.address = address;
+}
+
 public String getUserName() {
 	return userName;
 }
