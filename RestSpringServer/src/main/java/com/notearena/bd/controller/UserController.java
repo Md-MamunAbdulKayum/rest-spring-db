@@ -31,7 +31,7 @@ public class UserController {
 		  }
 		  System.out.println("Found user: "+userForm);
 		  return new ResponseEntity<UserForm>(userForm, HttpStatus.OK);
-		
+		 
 	}
 	
 	@RequestMapping(value = "/service/user", method = RequestMethod.GET, produces = "application/json")
