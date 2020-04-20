@@ -64,6 +64,8 @@ Click the delete button from the "action" column of the user table, it will dele
 This will call the webservie from the server app and URI to delete a user,
 URI: http://localhost:8080/SpringRestServer/service/user/delete/{id}". Here id is the id of the user we are deleting.
 
+![](Images/DeleteUser1.PNG)
+![](Images/DeleteUser2.PNG)	
 
 ## Further Improvement areas:
 1. Add custom validation
