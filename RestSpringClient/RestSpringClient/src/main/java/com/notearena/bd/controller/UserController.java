@@ -83,8 +83,8 @@ public class UserController {
 
 
 
-	@RequestMapping(value = "getuser/{id}", method = RequestMethod.GET)
-	public String getUser(@PathVariable Long userId, ModelMap model) throws Exception {
+	@RequestMapping(value = "getuser/{id}")
+	public String getUser(@PathVariable("id") Long userId, ModelMap model) throws Exception {
 
 		System.out.println("At getuser controller");
 
@@ -100,7 +100,6 @@ public class UserController {
 				model.addAttribute("name", personEntity.getBody().getUserName());				
 			} else {
 				System.out.println("null value");
-				return "error";
 			}
 
 		} catch (Exception e) {
